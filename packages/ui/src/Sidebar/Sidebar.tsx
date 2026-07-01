@@ -15,6 +15,11 @@ export interface SidebarProps {
   variant?: 'dark' | 'light';
   width?: string;
   collapsedWidth?: string;
+  /**
+   * Full height of the sidebar. Defaults to `100vh` (fills the viewport). Override
+   * when embedding inside a layout that already reserves space, e.g. `calc(100vh - 64px)`.
+   */
+  height?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   defaultOpen?: boolean;
@@ -30,6 +35,7 @@ export function Sidebar({
   variant = 'dark',
   width = '16rem',
   collapsedWidth = '4rem',
+  height,
   open: openProp,
   onOpenChange,
   defaultOpen = false,
@@ -74,7 +80,8 @@ export function Sidebar({
   }, [isMobile, mobileOpen, setMobileOpen]);
 
   const style = {
-    ['--sidebar-width' as string]: collapsed ? collapsedWidth : width
+    ['--sidebar-width' as string]: collapsed ? collapsedWidth : width,
+    ...(height ? { ['--sidebar-height' as string]: height } : {})
   } as React.CSSProperties;
 
   return (

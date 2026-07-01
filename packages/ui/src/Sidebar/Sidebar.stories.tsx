@@ -19,7 +19,13 @@ const ChartIcon = () => (
   </svg>
 );
 
-function Frame({ children, height = 480 }: { children: React.ReactNode; height?: number }) {
+function Frame({
+  children,
+  height = '100vh'
+}: {
+  children: React.ReactNode;
+  height?: number | string;
+}) {
   return (
     <div style={{ ...themeToCssVariables(defaultTheme), height, display: 'flex' }}>{children}</div>
   );
