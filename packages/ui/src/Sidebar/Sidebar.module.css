@@ -112,3 +112,13 @@
 .sidebar[data-mobile='true'][data-open='true'] {
   transform: translateX(0);
 }
+
+.sidebar[data-variant='light'] {
+  --sidebar-bg: var(--color-surface, #f8fafc);
+  --sidebar-fg: var(--color-text, #05244f);
+  --sidebar-muted: var(--color-muted, #6b7280);
+  --sidebar-active-bg: var(--color-primary, #ff5b00);
+  --sidebar-active-fg: #ffffff;
+  --sidebar-hover-bg: rgba(5, 36, 79, 0.06);
+  --sidebar-border: rgba(5, 36, 79, 0.12);
+}
