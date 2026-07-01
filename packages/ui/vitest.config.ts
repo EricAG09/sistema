@@ -1,12 +1,9 @@
 import { defineConfig } from 'vitest/config';
 import path from 'node:path';
 
-// NOTE: workspace packages (@nexus-ui/*) ship a `dist` build that is produced by
-// `tsc`. That build is currently broken repo-wide (tsconfig.base.json requires
-// `vite/client` types that aren't resolvable from packages without a vite
-// dependency) — a pre-existing issue outside this task's scope. Aliasing to
-// package `src` lets vitest exercise current source instead of stale/missing
-// `dist` output. Safe to remove once the repo-wide build issue is fixed.
+// Alias workspace packages to their `src` so vitest exercises live source
+// instead of the published `dist` build. This keeps tests in sync with the
+// current source without requiring a rebuild of dependencies before each run.
 export default defineConfig({
   resolve: {
     alias: {
