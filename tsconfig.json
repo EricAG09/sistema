@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "noEmit": true,
+    "paths": {
+      "@nexus-ui/*": ["packages/*/src"]
+    }
+  },
+  "references": [
+    { "path": "./packages/tokens" },
+    { "path": "./packages/theme" },
+    { "path": "./packages/ui" },
+    { "path": "./packages/hooks" },
+    { "path": "./packages/icons" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/types" }
+  ]
+}
