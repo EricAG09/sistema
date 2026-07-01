@@ -17,6 +17,7 @@ export interface SidebarProps {
   collapsedWidth?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  defaultOpen?: boolean;
   'aria-label': string;
 }
 
@@ -31,6 +32,7 @@ export function Sidebar({
   collapsedWidth = '4rem',
   open: openProp,
   onOpenChange,
+  defaultOpen = false,
   'aria-label': ariaLabel
 }: SidebarProps) {
   const collapsed = collapsedProp ?? defaultCollapsed;
@@ -45,7 +47,7 @@ export function Sidebar({
     return () => mq.removeEventListener('change', update);
   }, []);
 
-  const [mobileOpenState, setMobileOpenState] = useState(false);
+  const [mobileOpenState, setMobileOpenState] = useState(defaultOpen);
   const mobileOpen = openProp ?? mobileOpenState;
   const setMobileOpen = useCallback(
     (next: boolean) => {
@@ -62,18 +64,35 @@ export function Sidebar({
     [collapsed, variant, isMobile, mobileOpen, setMobileOpen]
   );
 
+  useEffect(() => {
+    if (!isMobile || !mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isMobile, mobileOpen, setMobileOpen]);
+
   const style = {
     ['--sidebar-width' as string]: collapsed ? collapsedWidth : width
   } as React.CSSProperties;
 
   return (
     <SidebarContext.Provider value={ctx}>
+      {isMobile && mobileOpen && (
+        <div
+          data-testid="sidebar-overlay"
+          className={styles.overlay}
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
       <nav
         aria-label={ariaLabel}
         className={styles.sidebar}
         data-collapsed={collapsed}
         data-variant={variant}
         data-mobile={isMobile}
+        data-open={mobileOpen}
         style={style}
       >
         {children}
