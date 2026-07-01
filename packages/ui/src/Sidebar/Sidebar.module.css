@@ -7,3 +7,54 @@
   color: var(--sidebar-fg, #ffffff);
   font-family: var(--font-family, sans-serif);
 }
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm, 0.75rem);
+  width: 100%;
+  padding: var(--spacing-xs, 0.5rem) var(--spacing-sm, 0.75rem);
+  border: 0;
+  background: transparent;
+  color: var(--sidebar-fg, #fff);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  border-radius: var(--radius-md, 0.5rem);
+  cursor: pointer;
+}
+
+.item:hover {
+  background: var(--sidebar-hover-bg, rgba(255, 255, 255, 0.08));
+}
+
+.item[data-active='true'] {
+  background: var(--sidebar-active-bg, #ff5b00);
+  color: var(--sidebar-active-fg, #fff);
+}
+
+.item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.itemIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemLabel {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemBadge {
+  flex: 0 0 auto;
+  font-size: var(--font-size-small, 0.875rem);
+}
