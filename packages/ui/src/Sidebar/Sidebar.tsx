@@ -6,6 +6,11 @@ export interface SidebarProps {
   children: React.ReactNode;
   collapsed?: boolean;
   defaultCollapsed?: boolean;
+  /**
+   * Reserved for a future collapse toggle. In v1 collapse is fully controlled by
+   * the consumer via `collapsed` / `defaultCollapsed`, so this callback is not
+   * fired internally yet.
+   */
   onCollapsedChange?: (collapsed: boolean) => void;
   variant?: 'dark' | 'light';
   width?: string;

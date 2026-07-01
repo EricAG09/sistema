@@ -19,4 +19,9 @@ describe('Sidebar container', () => {
     render(<Sidebar aria-label="Nav">x</Sidebar>);
     expect(screen.getByRole('navigation')).toHaveAttribute('data-variant', 'dark');
   });
+
+  it('reports not-mobile by default via data-mobile', () => {
+    render(<Sidebar aria-label="Nav">x</Sidebar>);
+    expect(screen.getByRole('navigation')).toHaveAttribute('data-mobile', 'false');
+  });
 });
