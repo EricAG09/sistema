@@ -33,4 +33,12 @@ describe('SidebarItem', () => {
     wrap(<SidebarItem label="Nope" disabled />);
     expect(screen.getByRole('button', { name: 'Nope' })).toBeDisabled();
   });
+
+  it('renders a disabled button (not a link) when href and disabled are both set', () => {
+    wrap(<SidebarItem label="Nope" href="/x" disabled />);
+    expect(screen.queryByRole('link')).not.toBeInTheDocument();
+    const button = screen.getByRole('button', { name: 'Nope' });
+    expect(button).toBeDisabled();
+    expect(button).not.toHaveAttribute('href');
+  });
 });
