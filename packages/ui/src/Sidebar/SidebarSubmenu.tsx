@@ -26,9 +26,11 @@ export function SidebarSubmenu({
 
   const toggle = useCallback(() => {
     const next = !open;
-    setOpenState(next);
+    if (openProp === undefined) {
+      setOpenState(next);
+    }
     onOpenChange?.(next);
-  }, [open, onOpenChange]);
+  }, [open, openProp, onOpenChange]);
 
   return (
     <div className={styles.submenu} data-open={open}>
@@ -38,6 +40,7 @@ export function SidebarSubmenu({
         aria-expanded={open}
         aria-controls={panelId}
         title={collapsed ? label : undefined}
+        aria-label={collapsed ? label : undefined}
         onClick={toggle}
       >
         {icon != null && (

@@ -49,10 +49,12 @@ export function Sidebar({
   const mobileOpen = openProp ?? mobileOpenState;
   const setMobileOpen = useCallback(
     (next: boolean) => {
-      setMobileOpenState(next);
+      if (openProp === undefined) {
+        setMobileOpenState(next);
+      }
       onOpenChange?.(next);
     },
-    [onOpenChange]
+    [openProp, onOpenChange]
   );
 
   const ctx = useMemo(
