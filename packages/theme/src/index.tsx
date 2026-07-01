@@ -98,6 +98,8 @@ export function themeToCssVariables(theme: NexusTheme): Record<string, string> {
     '--spacing-md': theme.spacing.md,
     '--spacing-lg': theme.spacing.lg,
     '--spacing-xl': theme.spacing.xl,
+    '--anim-duration': tokens.animation.duration.normal,
+    '--anim-easing': tokens.animation.easing.standard,
     '--sidebar-bg': '#05244F',
     '--sidebar-fg': '#ffffff',
     '--sidebar-muted': 'rgba(255,255,255,0.62)',

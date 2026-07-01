@@ -106,7 +106,7 @@
   bottom: 0;
   z-index: 1100;
   transform: translateX(-100%);
-  transition: transform var(--anim-duration, 250ms) ease;
+  transition: transform var(--anim-duration, 250ms) var(--anim-easing, ease);
 }
 
 .sidebar[data-mobile='true'][data-open='true'] {
