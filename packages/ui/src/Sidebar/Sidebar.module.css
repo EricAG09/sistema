@@ -95,7 +95,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(5, 36, 79, 0.5);
+  background: var(--sidebar-overlay-bg, rgba(5, 36, 79, 0.5));
   z-index: 1090;
 }
 

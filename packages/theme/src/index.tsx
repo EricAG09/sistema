@@ -104,6 +104,7 @@ export function themeToCssVariables(theme: NexusTheme): Record<string, string> {
     '--sidebar-active-bg': theme.colors.primary,
     '--sidebar-active-fg': '#ffffff',
     '--sidebar-hover-bg': 'rgba(255,255,255,0.08)',
-    '--sidebar-border': 'rgba(255,255,255,0.12)'
+    '--sidebar-border': 'rgba(255,255,255,0.12)',
+    '--sidebar-overlay-bg': 'rgba(5, 36, 79, 0.5)'
   };
 }
