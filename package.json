@@ -1,0 +1,45 @@
+{
+  "name": "nexus-ui",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.11.0",
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev": "turbo run dev --filter=...",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "storybook": "pnpm --filter storybook dev",
+    "docs": "pnpm --filter docs dev",
+    "playground": "pnpm --filter playground dev",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\""
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@commitlint/config-conventional": "^17.0.0",
+    "@storybook/addon-essentials": "^7.0.0",
+    "@storybook/addon-interactions": "^7.0.0",
+    "@storybook/react": "^7.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^14.0.0",
+    "prettier": "^3.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.5.0"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
