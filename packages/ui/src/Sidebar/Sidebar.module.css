@@ -58,3 +58,36 @@
   flex: 0 0 auto;
   font-size: var(--font-size-small, 0.875rem);
 }
+
+.header {
+  padding: var(--spacing-md, 1rem);
+  border-bottom: 1px solid var(--sidebar-border, rgba(255, 255, 255, 0.12));
+}
+
+.footer {
+  margin-top: auto;
+  padding: var(--spacing-md, 1rem);
+  border-top: 1px solid var(--sidebar-border, rgba(255, 255, 255, 0.12));
+}
+
+.group {
+  padding: var(--spacing-xs, 0.5rem);
+}
+
+.groupLabel {
+  padding: var(--spacing-xs, 0.5rem) var(--spacing-sm, 0.75rem);
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--sidebar-muted, rgba(255, 255, 255, 0.62));
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.groupDivider {
+  height: 1px;
+  margin: var(--spacing-xs, 0.5rem) 0;
+  background: var(--sidebar-border, rgba(255, 255, 255, 0.12));
+}
+
+.submenuPanel {
+  padding-left: var(--spacing-md, 1rem);
+}
