@@ -1,0 +1,130 @@
+/* Single Radio */
+.field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs, 0.5rem);
+  cursor: pointer;
+  user-select: none;
+}
+
+.field[data-disabled='true'] .label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.circle {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid var(--color-border, rgba(5, 36, 79, 0.3));
+  border-radius: 50%;
+  background: var(--color-background, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color var(--anim-duration, 250ms) var(--anim-easing, ease);
+  box-sizing: border-box;
+}
+
+.circle::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-primary, #FF5B00);
+  transform: scale(0);
+  transition: transform var(--anim-duration, 250ms) var(--anim-easing, ease);
+}
+
+.input:checked ~ .circle {
+  border-color: var(--color-primary, #FF5B00);
+}
+
+.input:checked ~ .circle::after {
+  transform: scale(1);
+}
+
+/* Focus ring */
+.input:focus-visible ~ .circle {
+  outline: 2px solid var(--color-primary, #FF5B00);
+  outline-offset: 2px;
+}
+
+/* Error state */
+.field[data-error='true'] .circle {
+  border-color: var(--color-error, #ef4444);
+}
+
+.labelText {
+  font-size: var(--font-size-body, 1rem);
+  color: var(--color-text, #05244F);
+  font-family: var(--font-family, system-ui, sans-serif);
+  line-height: 1.4;
+}
+
+.helperText {
+  margin: 0;
+  margin-left: calc(1.125rem + var(--spacing-xs, 0.5rem));
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-muted, #6b7280);
+  font-family: var(--font-family, system-ui, sans-serif);
+}
+
+.helperText[data-error='true'] {
+  color: var(--color-error, #ef4444);
+}
+
+/* RadioGroup */
+.group {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+
+.groupLegend {
+  font-size: var(--font-size-small, 0.875rem);
+  font-weight: 500;
+  color: var(--color-text, #05244F);
+  font-family: var(--font-family, system-ui, sans-serif);
+  margin-bottom: var(--spacing-xs, 0.5rem);
+  padding: 0;
+}
+
+.groupItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+
+.groupItems[data-orientation='horizontal'] {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-md, 1rem);
+}
+
+.groupError {
+  margin: 0;
+  margin-top: var(--spacing-xs, 0.5rem);
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-error, #ef4444);
+  font-family: var(--font-family, system-ui, sans-serif);
+}

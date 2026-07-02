@@ -1,0 +1,109 @@
+.field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs, 0.5rem);
+  cursor: pointer;
+  user-select: none;
+}
+
+.field[data-disabled='true'] .label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Visually hidden native input */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.box {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid var(--color-border, rgba(5, 36, 79, 0.3));
+  border-radius: var(--radius-sm, 0.25rem);
+  flex-shrink: 0;
+  background: var(--color-background, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--anim-duration, 250ms) var(--anim-easing, ease),
+    border-color var(--anim-duration, 250ms) var(--anim-easing, ease);
+  box-sizing: border-box;
+}
+
+.input:checked ~ .box,
+.input:indeterminate ~ .box {
+  background: var(--color-primary, #FF5B00);
+  border-color: var(--color-primary, #FF5B00);
+}
+
+/* Focus ring */
+.input:focus-visible ~ .box {
+  outline: 2px solid var(--color-primary, #FF5B00);
+  outline-offset: 2px;
+}
+
+/* Error state */
+.field[data-error='true'] .box {
+  border-color: var(--color-error, #ef4444);
+}
+
+/* Checkmark via pseudo element */
+.box::after {
+  content: '';
+  display: none;
+  box-sizing: border-box;
+}
+
+.input:checked ~ .box::after {
+  display: block;
+  width: 0.3rem;
+  height: 0.6rem;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+  margin-bottom: 2px;
+}
+
+/* Indeterminate dash */
+.input:indeterminate ~ .box::after {
+  display: block;
+  width: 0.5rem;
+  height: 2px;
+  background: #fff;
+  border: none;
+  transform: none;
+  border-radius: 1px;
+}
+
+.labelText {
+  font-size: var(--font-size-body, 1rem);
+  color: var(--color-text, #05244F);
+  font-family: var(--font-family, system-ui, sans-serif);
+  line-height: 1.4;
+}
+
+.helperText {
+  margin: 0;
+  margin-left: calc(1.125rem + var(--spacing-xs, 0.5rem));
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-muted, #6b7280);
+  font-family: var(--font-family, system-ui, sans-serif);
+}
+
+.helperText[data-error='true'] {
+  color: var(--color-error, #ef4444);
+}

@@ -1,0 +1,283 @@
+.wrapper {
+  width: 100%;
+  font-family: var(--font-family, system-ui, sans-serif);
+  border: 1px solid var(--color-border, rgba(5, 36, 79, 0.12));
+  border-radius: var(--radius-lg, 0.75rem);
+  overflow: hidden;
+  background: var(--color-background, #fff);
+}
+
+/* ---- Toolbar ---- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md, 1rem);
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
+  border-bottom: 1px solid var(--color-border, rgba(5, 36, 79, 0.12));
+  background: var(--color-surface, #f8fafc);
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, 0.5rem);
+  flex: 1;
+  max-width: 20rem;
+  background: var(--color-background, #fff);
+  border: 1.5px solid var(--color-border, rgba(5, 36, 79, 0.2));
+  border-radius: var(--radius-md, 0.5rem);
+  padding: 0.375rem var(--spacing-sm, 0.75rem);
+  color: var(--color-muted, #6b7280);
+  cursor: text;
+  transition: border-color var(--anim-duration, 250ms) ease;
+}
+
+.searchBox:focus-within {
+  border-color: var(--color-primary, #ff5b00);
+  color: var(--color-text, #05244f);
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-small, 0.875rem);
+  font-family: inherit;
+  color: var(--color-text, #05244f);
+  flex: 1;
+  min-width: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--color-muted, #6b7280);
+}
+
+/* hide the native X button on search inputs */
+.searchInput::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.selectionCount {
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-primary, #ff5b00);
+  font-weight: 500;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* ---- Table ---- */
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-small, 0.875rem);
+}
+
+.caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
+  font-size: var(--font-size-small, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text, #05244f);
+  border-bottom: 1px solid var(--color-border, rgba(5, 36, 79, 0.12));
+  background: var(--color-surface, #f8fafc);
+}
+
+.thead {
+  background: var(--color-surface, #f8fafc);
+}
+
+.th {
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted, #6b7280);
+  white-space: nowrap;
+  border-bottom: 2px solid var(--color-border, rgba(5, 36, 79, 0.12));
+}
+
+.th input[type='checkbox'],
+.td input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: var(--color-primary, #ff5b00);
+  display: block;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted, #6b7280);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--anim-duration, 250ms) ease;
+}
+
+.sortButton:hover {
+  color: var(--color-text, #05244f);
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--color-primary, #ff5b00);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---- Body rows ---- */
+.tr {
+  border-bottom: 1px solid var(--color-border, rgba(5, 36, 79, 0.08));
+  transition: background var(--anim-duration, 250ms) ease;
+}
+
+.tr:last-child {
+  border-bottom: none;
+}
+
+.tr:hover {
+  background: rgba(5, 36, 79, 0.025);
+}
+
+.tr[data-selected='true'] {
+  background: rgba(255, 91, 0, 0.04);
+}
+
+.tr[data-selected='true']:hover {
+  background: rgba(255, 91, 0, 0.07);
+}
+
+.tr[data-clickable='true'] {
+  cursor: pointer;
+}
+
+.tr[data-clickable='true']:hover {
+  background: rgba(5, 36, 79, 0.04);
+}
+
+.tr[data-clickable='true']:focus-visible {
+  outline: 2px solid var(--color-primary, #ff5b00);
+  outline-offset: -2px;
+}
+
+.td {
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
+  color: var(--color-text, #05244f);
+  vertical-align: middle;
+}
+
+/* ---- Empty state ---- */
+.emptyCell {
+  padding: 0 !important;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm, 0.75rem);
+  padding: 3rem var(--spacing-md, 1rem);
+  color: var(--color-muted, #6b7280);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--font-size-body, 1rem);
+}
+
+/* ---- Loading skeleton ---- */
+.skeleton {
+  display: inline-block;
+  height: 0.875rem;
+  background: rgba(5, 36, 79, 0.08);
+  border-radius: 0.25rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ---- Pagination ---- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm, 0.75rem) var(--spacing-md, 1rem);
+  border-top: 1px solid var(--color-border, rgba(5, 36, 79, 0.12));
+  background: var(--color-surface, #f8fafc);
+  gap: var(--spacing-md, 1rem);
+  flex-wrap: wrap;
+}
+
+.pageInfo {
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-muted, #6b7280);
+}
+
+.pageButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: 1px solid var(--color-border, rgba(5, 36, 79, 0.12));
+  border-radius: var(--radius-md, 0.5rem);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text, #05244f);
+  transition:
+    background var(--anim-duration, 250ms) ease,
+    border-color var(--anim-duration, 250ms) ease;
+  line-height: 1;
+}
+
+.pageBtn:hover:not(:disabled) {
+  background: rgba(5, 36, 79, 0.06);
+  border-color: rgba(5, 36, 79, 0.2);
+}
+
+.pageBtn:focus-visible {
+  outline: 2px solid var(--color-primary, #ff5b00);
+  outline-offset: 2px;
+}
+
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pageNum {
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-muted, #6b7280);
+  padding: 0 0.5rem;
+  white-space: nowrap;
+}

@@ -1,0 +1,69 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs, 0.5rem);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md, 0.5rem);
+  font-family: var(--font-family, system-ui, sans-serif);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--anim-duration, 250ms) var(--anim-easing, ease),
+              border-color var(--anim-duration, 250ms) var(--anim-easing, ease),
+              opacity var(--anim-duration, 250ms) var(--anim-easing, ease);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* Sizes */
+.button[data-size='sm'] { padding: 0.375rem 0.75rem; font-size: var(--font-size-small, 0.875rem); }
+.button[data-size='md'] { padding: 0.5rem 1.25rem; font-size: var(--font-size-body, 1rem); }
+.button[data-size='lg'] { padding: 0.75rem 1.75rem; font-size: 1.125rem; }
+
+/* Full width */
+.button[data-full-width='true'] { width: 100%; }
+
+/* Primary: orange */
+.button[data-variant='primary'] { background: var(--color-primary, #FF5B00); color: #fff; }
+.button[data-variant='primary']:hover:not(:disabled) { background: #e64e00; }
+.button[data-variant='primary']:active:not(:disabled) { background: #cc4500; }
+
+/* Secondary: outlined dark blue */
+.button[data-variant='secondary'] { background: transparent; border-color: var(--color-text, #05244F); color: var(--color-text, #05244F); }
+.button[data-variant='secondary']:hover:not(:disabled) { background: rgba(5, 36, 79, 0.06); }
+
+/* Ghost */
+.button[data-variant='ghost'] { background: transparent; color: var(--color-text, #05244F); }
+.button[data-variant='ghost']:hover:not(:disabled) { background: rgba(5, 36, 79, 0.06); }
+
+/* Danger */
+.button[data-variant='danger'] { background: var(--color-error, #ef4444); color: #fff; }
+.button[data-variant='danger']:hover:not(:disabled) { background: #dc2626; }
+
+/* Disabled */
+.button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Loading spinner */
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

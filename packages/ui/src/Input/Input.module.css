@@ -1,0 +1,100 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs, 0.5rem);
+}
+.field[data-full-width='true'] {
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-small, 0.875rem);
+  font-weight: 500;
+  color: var(--color-text, #05244F);
+  font-family: var(--font-family, system-ui, sans-serif);
+}
+
+.required {
+  color: var(--color-error, #ef4444);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 var(--spacing-sm, 0.75rem);
+  border: 1.5px solid var(--color-border, rgba(5, 36, 79, 0.2));
+  border-radius: var(--radius-md, 0.5rem);
+  background: var(--color-background, #fff);
+  color: var(--color-text, #05244F);
+  font-size: var(--font-size-body, 1rem);
+  font-family: var(--font-family, system-ui, sans-serif);
+  transition:
+    border-color var(--anim-duration, 250ms) var(--anim-easing, ease),
+    box-shadow var(--anim-duration, 250ms) var(--anim-easing, ease);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-muted, #6b7280);
+}
+
+.input:focus {
+  border-color: var(--color-primary, #FF5B00);
+  box-shadow: 0 0 0 3px rgba(255, 91, 0, 0.15);
+}
+
+.input:disabled {
+  background: var(--color-surface, #f8fafc);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field[data-error='true'] .input {
+  border-color: var(--color-error, #ef4444);
+}
+
+.field[data-error='true'] .input:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.input[data-has-left-icon='true'] {
+  padding-left: 2.5rem;
+}
+
+.input[data-has-right-icon='true'] {
+  padding-right: 2.5rem;
+}
+
+.icon {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-muted, #6b7280);
+  pointer-events: none;
+}
+
+.icon[data-position='left'] {
+  left: var(--spacing-sm, 0.75rem);
+}
+
+.icon[data-position='right'] {
+  right: var(--spacing-sm, 0.75rem);
+}
+
+.helperText {
+  margin: 0;
+  font-size: var(--font-size-small, 0.875rem);
+  color: var(--color-muted, #6b7280);
+  font-family: var(--font-family, system-ui, sans-serif);
+}
+
+.helperText[data-error='true'] {
+  color: var(--color-error, #ef4444);
+}
